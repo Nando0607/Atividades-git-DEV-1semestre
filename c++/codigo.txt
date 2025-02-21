@@ -1,0 +1,59 @@
+/* 
+Autor: Fernando gabriel
+Nome programa: pisca-pisca
+Descrição: aprendendo a linguagem C++
+19/02/25
+*/ 
+#define pinLEDred 1
+#define pinLEDyellow 2
+#define pinLEDgreen 3
+#define pinLEDred2 5
+#define pinLEDyellow2 6
+#define pinLEDgreen2 7
+#define pinLEDp 8
+#define pinLEDp2 9
+#define pinLEDp3 10
+#define pinLEDp4 11
+#define tempoPiscaV 2000
+#define tempoPiscaA 3000
+#define tempoPiscaVE 5000
+#define tempoPiscaV2 2000
+#define tempoPiscaA2 3000
+#define tempoPiscaVE2 5000
+void setup() //inicia o arduino
+ {
+   pinMode (pinLEDgreen ,OUTPUT); //Define o pino
+   pinMode (pinLEDyellow,OUTPUT); //13 como saida
+   pinMode (pinLEDred,OUTPUT); 
+   pinMode (pinLEDgreen2,OUTPUT);
+   pinMode (pinLEDyellow2,OUTPUT);
+   pinMode (pinLEDred2,OUTPUT);
+  }
+ void loop ()
+{  
+   digitalWrite (pinLEDgreen,HIGH);
+   digitalWrite (pinLEDred2, HIGH);
+   delay(tempoPiscaVE);
+   
+   digitalWrite (pinLEDgreen, LOW);
+   digitalWrite (pinLEDyellow, HIGH); 
+   delay(tempoPiscaA);
+   
+   digitalWrite (pinLEDyellow, LOW);
+   digitalWrite (pinLEDred, HIGH);
+   delay(tempoPiscaV);
+   
+   digitalWrite (pinLEDred2, LOW); 
+   digitalWrite (pinLEDgreen2, HIGH);
+   delay(tempoPiscaV2);
+   
+   digitalWrite (pinLEDgreen2, LOW);
+   digitalWrite (pinLEDyellow2, HIGH);
+   delay(tempoPiscaA2);
+   
+   digitalWrite (pinLEDyellow2, LOW);
+   digitalWrite (pinLEDred2, HIGH);
+   delay(tempoPiscaVE2);
+   digitalWrite (pinLEDred, LOW);
+   
+ }
