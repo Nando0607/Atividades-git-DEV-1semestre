@@ -1,0 +1,61 @@
+#define pinLedVermelho 13
+#define pinLedAmarelo 10
+#define pinLedVerde 7
+
+#define tempoPiscaVerde 3000 
+#define tempoPiscaAmarelo 2000
+#define tempoPiscaVermelho 5000
+
+unsigned long tempoms;
+unsigned long tempoInicial = 0;
+int estado = 0;
+
+void setup()
+{
+  pinMode(pinLedVermelho, OUTPUT);
+   pinMode(pinLedVerde, OUTPUT);
+  pinMode(pinLedAmarelo,OUTPUT);
+   
+
+  
+}
+
+void loop()
+{
+
+tempoms = millis();
+  
+  switch (estado) {
+    
+    case 0:  // Pisca o LED Verde
+  digitalWrite(pinLedVerde, HIGH);
+  digitalWrite(pinLedAmarelo, LOW);
+  digitalWrite(pinLedVermelho, LOW);
+  if (tempoms - tempoInicial >= tempoPiscaVerde) {
+  tempoInicial = tempoms;
+  estado = 1;
+}
+  break;
+         
+    
+   case 1:  // Pisca o LED Amarelo
+   digitalWrite(pinLedVerde, LOW);
+   digitalWrite(pinLedAmarelo, HIGH);
+   digitalWrite(pinLedVermelho, LOW);
+   if (tempoms - tempoInicial >= tempoPiscaAmarelo) {
+   tempoInicial = tempoms;
+   estado = 2;
+} 
+            break;
+
+   case 2:  // Pisca o LED Vermelho
+   digitalWrite(pinLedVerde, LOW);
+   digitalWrite(pinLedAmarelo, LOW);
+   digitalWrite(pinLedVermelho, HIGH);
+   if (tempoms - tempoInicial >= tempoPiscaVermelho) {
+   tempoInicial = tempoms;
+   estado = 0;  // Volta para o LED Verde
+  }
+   break;
+ }
+}
